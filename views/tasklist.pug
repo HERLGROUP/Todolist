@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        title List of tasks
+    body
+        h1 List of tasks
+        div.form-row
+            div.col.form-group.col-md-9    
+                form.search(action='/deletetask')
+                    div.form-row
+                        div.col-md-8
+                            input.form-control(name='taskname' placeholder="Enter your search term ...")
+                        div.col-md-4
+                            input.btn.btn-dark.btn-block(type="submit", value="DELETE")
+        div.form-row
+            div.col.form-group.col-md-9    
+                form.search(action='/updatetask')
+                    div.form-row
+                        div.col-md-8
+                            input.form-control(name='taskname' placeholder="Enter your search term ...")
+                        div.col-md-4
+                            input.btn.btn-dark.btn-block(type="submit", value="UPDATE")
+        
+        table.table
+            thead.thead-dark
+                tr
+                    th Name
+                    th Description
+                    th Due Date
+                    th Author
+                    th Complete
+            tbody
+                each task in tasks
+                    tr
+                        td #{task.taskname}
+                        td #{task.taskdescription}
+                        td #{task.taskduedate}
+                        td #{task.taskauthor}
+                        td #{task.isComplete}
