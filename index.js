@@ -73,7 +73,9 @@ server.get("/updatetask", (req, res) => {
 
 server.post("/updatetask", async (req, res) => {
   try {
-    await Task.updateOne(req.body);
+    let { taskname } = req.body;
+    let updates = await Task.updateOne({ taskname }, req.body);
+    console.log(updates);
     res.redirect("/tasklist");
   } catch (error) {
     console.log("Could not update the task");
